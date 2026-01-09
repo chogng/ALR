@@ -7,17 +7,39 @@
   ],
   "permissions": [
     "core:default",
-    "dialog:default",
+    "dialog:allow-open",
     "fs:default",
+    "fs:allow-rename",
+    "fs:allow-exists",
     {
       "identifier": "fs:scope",
       "allow": [
-        { "path": "$HOME/**" },
-        { "path": "$APPDATA/**" },
-        { "path": "$APPLOCALDATA/**" },
-        { "path": "$DESKTOP/**" },
-        { "path": "$DOWNLOAD/**" },
-        { "path": "$DOCUMENT/**" }
+        {
+          "path": "**"
+        }
+      ],
+      "deny": [
+        {
+          "path": "$APPDATA/**"
+        },
+        {
+          "path": "$APPLOCALDATA/**"
+        },
+        {
+          "path": "$APPCONFIG/**"
+        },
+        {
+          "path": "$RESOURCE/**"
+        },
+        {
+          "path": "C:\\Windows/**"
+        },
+        {
+          "path": "C:\\Program Files/**"
+        },
+        {
+          "path": "C:\\Program Files (x86)/**"
+        }
       ]
     }
   ]

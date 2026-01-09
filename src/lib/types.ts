@@ -1,4 +1,4 @@
-export type ScanStatus = 'matched' | 'skipped' | 'unmatched' | 'conflict' | 'error';
+export type ScanStatus = 'matched' | 'skipped' | 'unmatched' | 'conflict' | 'error' | 'success';
 
 export type MapItem = {
   doi?: unknown;
@@ -9,6 +9,28 @@ export type MapItem = {
 export type LiteratureMap = {
   doiToTitle: Map<string, string>;
   size: number;
+};
+
+export type PdfMetadata = {
+  title: string | null;
+  author: string | null;
+  subject: string | null;
+  keywords: string | null;
+  creator: string | null;
+  producer: string | null;
+  creationDate: string | null;
+  modDate: string | null;
+};
+
+export type CrossRefInfo = {
+  title: string | null;
+  journal: string | null;
+  publisher: string | null;
+  year: number | null;
+  authors: string[] | null;
+  volume: string | null;
+  issue: string | null;
+  page: string | null;
 };
 
 export type ScanRow = {
@@ -22,6 +44,8 @@ export type ScanRow = {
   proposedPath: string | null;
   reason: string | null;
   conflictSuggestion: string | null;
+  metadata: PdfMetadata | null;
+  crossref: CrossRefInfo | null;
 };
 
 export type RenameLogEntry = {
@@ -30,5 +54,6 @@ export type RenameLogEntry = {
   doi: string | null;
   title: string | null;
   timestamp: string;
+  status: 'ok' | 'failed';
+  error: string | null;
 };
-

@@ -1,0 +1,101 @@
+.top-bar {
+    background: #ffffff;
+    border-bottom: 1px solid #e5e5e5;
+    display: flex;
+    flex-direction: column;
+    font-family: 'Segoe UI', sans-serif;
+    user-select: none;
+}
+
+.menu-bar {
+    display: flex;
+    padding: 2px 8px;
+    height: 32px;
+    align-items: center;
+    background: #ffffff;
+}
+
+.menu-item-container {
+    position: relative;
+    height: 100%;
+    display: flex;
+    align-items: center;
+}
+
+.menu-label {
+    padding: 0 10px;
+    height: 24px;
+    display: flex;
+    align-items: center;
+    cursor: default;
+    border-radius: 4px;
+    font-size: 13px;
+    color: #333;
+    transition: background 0.1s;
+    margin-right: 2px;
+}
+
+.menu-label:hover {
+    background: #f0f0f0;
+}
+
+.menu-label.active {
+    background: #e8e8e8;
+    color: #000;
+}
+
+.dropdown-menu {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    background: #ffffff;
+    border: 1px solid #d4d4d4;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    border-radius: 8px;
+
+    min-width: 200px;
+    z-index: 2000;
+    padding: 4px;
+    margin-top: 0;
+    display: flex;
+    flex-direction: column;
+}
+
+.dropdown-item {
+    padding: 6px 12px;
+    cursor: default;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 13px;
+    color: #333;
+    border-radius: 4px;
+    transition: background 0.1s;
+}
+
+.dropdown-item:hover {
+    background: #e6f7ff;
+    color: #333;
+}
+
+.undo-btn {
+    height: 24px;
+    padding: 0 10px;
+    border: none;
+    background: transparent;
+    cursor: default;
+    font-size: 13px;
+    color: #333;
+    border-radius: 4px;
+    transition: background 0.1s;
+}
+
+.undo-btn:hover {
+    background: #f0f0f0;
+}
+
+.undo-btn:disabled {
+    opacity: 0.55;
+    cursor: not-allowed;
+    background: transparent;
+}

@@ -4,15 +4,20 @@ import { normalizeDoi } from './doi';
 
 type RawMap = unknown;
 
+function extractItems(parsed: RawMap): MapItem[] {
+  if (Array.isArray(parsed)) return parsed as MapItem[];
+  if (parsed && typeof parsed === 'object') {
+    const maybe = parsed as { items?: unknown };
+    if (Array.isArray(maybe.items)) return maybe.items as MapItem[];
+  }
+  return [];
+}
+
 export async function loadLiteratureMapFromPath(path: string): Promise<LiteratureMap> {
   const jsonText = await readTextFile(path);
   const parsed: RawMap = JSON.parse(jsonText);
 
-  const items: MapItem[] = Array.isArray(parsed)
-    ? (parsed as MapItem[])
-    : typeof parsed === 'object' && parsed && Array.isArray((parsed as any).items)
-      ? ((parsed as any).items as MapItem[])
-      : [];
+  const items = extractItems(parsed);
 
   const doiToTitle = new Map<string, string>();
 
@@ -29,4 +34,3 @@ export async function loadLiteratureMapFromPath(path: string): Promise<Literatur
 
   return { doiToTitle, size: doiToTitle.size };
 }
-

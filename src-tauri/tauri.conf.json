@@ -1,11 +1,11 @@
 {
   "$schema": "../node_modules/@tauri-apps/cli/config.schema.json",
-  "productName": "ALR Renamer",
+  "productName": "Renamer",
   "version": "0.1.0",
   "identifier": "com.appointer.alr-renamer",
   "build": {
     "frontendDist": "../dist",
-    "devUrl": "http://localhost:5173",
+    "devUrl": "http://localhost:5178",
     "beforeDevCommand": "npm run dev",
     "beforeBuildCommand": "npm run build"
   },
@@ -14,7 +14,7 @@
       {
         "label": "main",
         "create": false,
-        "title": "ALR Renamer",
+        "title": "Renamer",
         "width": 800,
         "height": 600,
         "resizable": true,

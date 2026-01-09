@@ -13,6 +13,10 @@ struct RenameLogEntry {
   doi: Option<String>,
   title: Option<String>,
   timestamp: String,
+  #[serde(default)]
+  status: String,
+  #[serde(default)]
+  error: Option<String>,
 }
 
 #[derive(Debug, Clone, serde::Serialize, serde::Deserialize)]

@@ -1,6 +1,6 @@
-# ALR Renamer (Portable)
+# Renamer (Portable)
 
-This is a **portable (no installer)** build of ALR Renamer. It renames local PDF files using a `DOI -> title` mapping, entirely on your machine.
+This is a **portable (no installer)** build of Renamer. It renames local PDF files using a `DOI -> title` mapping, entirely on your machine.
 
 ## Requirements (Windows)
 
@@ -21,7 +21,7 @@ The tool accepts either:
 
 ## How to use
 
-1. Run `ALR Renamer.exe`.
+1. Run `Renamer.exe` (or the generated portable `.exe`).
 2. Click **Select map JSON** → choose your `literature_map.json`.
 3. Click **Add PDFs** or **Add folder**.
 4. Click **Scan** to preview changes.
@@ -31,6 +31,6 @@ The tool accepts either:
 ## Notes
 
 - Renaming is **in-place** (original folder).
-- The app runs in **portable/green mode**: it creates an `ALR Renamer Data/` folder next to the `.exe` to store its own data (last-run log + webview cache).
+- The app runs in **portable/green mode**: it creates a `Renamer Data/` folder next to the `.exe` to store its own data (last-run log + webview cache).
 - Default target name is `title.pdf`.
 - If `title.pdf` already exists, it suggests `title - doiSuffix.pdf`, then `title - doiSuffix (2).pdf`, etc.
