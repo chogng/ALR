@@ -3,6 +3,8 @@
 状态：Completed / Archived  
 最后更新：2026-01-09
 
+（CI/Release 流程测试：v0.2.1）
+
 Renamer 是一个轻量桌面工具，用于基于 `DOI -> Title` 映射批量重命名 PDF 文件。  
 技术栈：Tauri 2 + React + TypeScript + Vite。
 
