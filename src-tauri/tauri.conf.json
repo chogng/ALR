@@ -1,7 +1,7 @@
 {
   "$schema": "../node_modules/@tauri-apps/cli/config.schema.json",
   "productName": "Renamer",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "identifier": "com.appointer.alr-renamer",
   "build": {
     "frontendDist": "../dist",
@@ -17,6 +17,8 @@
         "title": "Renamer",
         "width": 800,
         "height": 600,
+        "center": true,
+        "backgroundColor": "#f8f9fa",
         "resizable": true,
         "fullscreen": false
       }
@@ -28,6 +30,13 @@
   "bundle": {
     "active": true,
     "targets": "all",
+    "publisher": "Appointer",
+    "windows": {
+      "nsis": {
+        "installerIcon": "icons/icon.ico",
+        "installerHooks": "nsis-hooks.nsh"
+      }
+    },
     "icon": [
       "icons/32x32.png",
       "icons/128x128.png",

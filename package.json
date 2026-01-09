@@ -1,16 +1,14 @@
 {
   "name": "alr-renamer",
   "private": true,
-  "version": "0.0.0",
+  "version": "0.2.0",
   "type": "module",
   "scripts": {
     "dev": "vite",
     "tauri": "tauri",
     "dev:tauri": "tauri dev",
     "build": "tsc -b && vite build",
-    "build:tauri": "tauri build",
-    "build:portable": "tauri build --no-bundle",
-    "package:portable:win": "npm run build:portable && powershell -ExecutionPolicy Bypass -File scripts\\package-portable.ps1",
+    "build:tauri": "tauri build && powershell -ExecutionPolicy Bypass -File scripts\\normalize-bundles.ps1",
     "lint": "eslint .",
     "preview": "vite preview"
   },

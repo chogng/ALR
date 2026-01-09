@@ -1,9 +1,18 @@
-import * as pdfjsLib from 'pdfjs-dist';
+type PdfJsModule = typeof import('pdfjs-dist');
 
-let configured = false;
+let pdfjsPromise: Promise<PdfJsModule> | null = null;
+let workerConfigured = false;
 
-export function ensurePdfJsWorker() {
-  if (configured) return;
+async function getPdfJs(): Promise<PdfJsModule> {
+  if (!pdfjsPromise) {
+    pdfjsPromise = import('pdfjs-dist');
+  }
+  return pdfjsPromise;
+}
+
+async function ensurePdfJsWorker(): Promise<void> {
+  if (workerConfigured) return;
+  const pdfjsLib = await getPdfJs();
   // Vite-friendly worker resolution.
   // eslint-disable-next-line @typescript-eslint/ban-ts-comment
   // @ts-ignore
@@ -11,7 +20,7 @@ export function ensurePdfJsWorker() {
     'pdfjs-dist/build/pdf.worker.min.mjs',
     import.meta.url,
   ).toString();
-  configured = true;
+  workerConfigured = true;
 }
 
 export type PdfMetadata = {
@@ -36,7 +45,8 @@ export type PdfExtractResult = {
  * the same data twice.
  */
 export async function extractPdfInfo(data: Uint8Array, pages: number = 2): Promise<PdfExtractResult> {
-  ensurePdfJsWorker();
+  await ensurePdfJsWorker();
+  const pdfjsLib = await getPdfJs();
   const doc = await pdfjsLib.getDocument({ data }).promise;
 
   try {

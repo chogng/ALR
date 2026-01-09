@@ -117,7 +117,8 @@
     border-collapse: separate;
     /* Changed for sticky header border handling */
     border-spacing: 0;
-    min-width: 600px;
+    min-width: 0;
+    table-layout: fixed;
 }
 
 .file-list-content th {
@@ -189,7 +190,6 @@
     justify-content: center;
     color: #999;
     flex: 1;
-    min-height: 200px;
 }
 
 .empty-state-cell {

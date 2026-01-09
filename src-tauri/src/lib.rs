@@ -27,22 +27,21 @@ struct LastRunFile {
 }
 
 fn resolve_data_root(app: &tauri::AppHandle) -> PathBuf {
-  let exe_dir = std::env::current_exe()
-    .ok()
-    .and_then(|p| p.parent().map(|p| p.to_path_buf()));
-
-  if let Some(dir) = exe_dir {
-    let portable = dir.join("ALR Renamer Data");
-    if std::fs::create_dir_all(&portable).is_ok() {
-      return portable;
-    }
-  }
+  // For an installed app, prefer the OS-managed app data directory.
+  // This avoids user data being coupled to the installation directory,
+  // which can be removed during uninstall or by cleanup tools.
+  let product = app
+    .config()
+    .product_name
+    .as_deref()
+    .unwrap_or("App");
+  let dir_name = format!("{product} Data");
 
   let fallback = app
     .path()
     .app_data_dir()
     .unwrap_or_else(|_| std::env::temp_dir())
-    .join("ALR Renamer Data");
+    .join(dir_name);
 
   let _ = std::fs::create_dir_all(&fallback);
   fallback
