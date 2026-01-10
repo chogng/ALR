@@ -43,3 +43,14 @@ jobs:
           prerelease: false
           args: "--bundles nsis"
 
+      - name: build portable zip
+        shell: pwsh
+        run: |
+          pwsh -ExecutionPolicy Bypass -File scripts/build-portable.ps1 -ReleaseDir "src-tauri\\target\\release" -ProductName "Renamer"
+
+      - name: upload portable zip
+        shell: pwsh
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          gh release upload "${{ github.ref_name }}" "src-tauri\\target\\release\\bundle\\portable\\Renamer-portable-windows-x64.zip" --clobber
